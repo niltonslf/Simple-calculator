@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+    <style>
+        .calculator{
+            width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap ;
+            background: #eee;
+        }
+        
+        .calculator .result{
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            text-align: right;
+        }
+        
+        .calculator .equals, .calculator .clear{
+            width: 50%;
+            background: #333;
+            color: white;
+        }
+
+        .calculator button{
+            width: calc(100% / 3);
+            padding: 15px;
+            background: #eee;
+            border: 1px solid white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+        <input type="text" class="result">
+        <button onclick="writeValue('7')">7</button>
+        <button onclick="writeValue('8')">8</button>
+        <button onclick="writeValue('9')">9</button>
+        <button onclick="writeValue('4')">4</button>
+        <button onclick="writeValue('5')">5</button>
+        <button onclick="writeValue('6')">6</button>
+        <button onclick="writeValue('1')">1</button>
+        <button onclick="writeValue('2')">2</button>
+        <button onclick="writeValue('3')">3</button>
+        <button onclick="writeValue('0')">0</button>
+        <button onclick="writeValue(',')">,</button>
+        <button onclick="writeValue('+')">+</button>
+        <button onclick="writeValue('-')">-</button>
+        <button onclick="writeValue('*')">*</button>
+        <button onclick="writeValue('/')">/</button>
+        <button class="equals" onclick="calculate()">=</button>
+        <button class="clear" onclick="clearCalc()">C</button>
+    </div>
+
+    <script>
+        var resultField = document.querySelector('.result');
+
+        function calculate() {
+            var result = eval(resultField.value);
+            showResult(result);
+        }
+
+        function showResult(data) {
+            resultField.value = data
+        }
+
+        function writeValue(value) {
+            resultField.value += `${value}`;
+        }
+
+        function clearCalc() {
+            resultField.value = ""
+        }
+    </script>
+</body>
+
+</html>
